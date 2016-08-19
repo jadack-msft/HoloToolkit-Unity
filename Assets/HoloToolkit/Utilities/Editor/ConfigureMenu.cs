@@ -38,6 +38,7 @@ namespace HoloToolkit.Unity
             Camera.main.clearFlags = CameraClearFlags.SolidColor;
             Camera.main.backgroundColor = Color.black;
             Camera.main.nearClipPlane = 0.85f;
+            Camera.main.fieldOfView = 16.0f;
         }
 
         /// <summary>
@@ -82,7 +83,10 @@ namespace HoloToolkit.Unity
                 "Yes", "No");
 
             if (canReload)
-                EditorApplication.OpenProject(Application.dataPath + "/..");
+            {
+                string projectPath = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+                EditorApplication.OpenProject(projectPath);
+            }
         }
 
         /// <summary>
